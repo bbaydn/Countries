@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/countriesFragment">
+
+    <fragment
+        android:id="@+id/countriesFragment"
+        android:name="com.busra.countriesapplication.ui.fragments.HomeFragment"
+        android:label="fragment_countries"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_countriesFragment_to_countryDetailFragment2"
+            app:destination="@id/countryDetailFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_countriesFragment_to_savedFragment2"
+            app:destination="@id/savedFragment"
+            app:popUpTo="@id/countryDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.busra.countriesapplication.ui.fragments.SavedFragment"
+        android:label="fragment_saved"
+        tools:layout="@layout/fragment_saved" >
+        <action
+            android:id="@+id/action_savedFragment_to_countryDetailFragment3"
+            app:destination="@id/countryDetailFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_savedFragment_to_countriesFragment2"
+            app:destination="@id/countriesFragment"
+            app:popUpTo="@id/countryDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/countryDetailFragment"
+        android:name="com.busra.countriesapplication.ui.fragments.DetailsFragment"
+        android:label="fragment_country_detail"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="countryCode"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionCountryToURL"
+            app:destination="@id/webFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.busra.countriesapplication.ui.fragments.UrlFragment"
+        android:label="fragment_url"
+        tools:layout="@layout/fragment_url" >
+        <argument
+            android:name="countryWikiData"
+            app:argType="string" />
+    </fragment>
+</navigation>

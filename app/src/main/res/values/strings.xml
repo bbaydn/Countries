@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Countries</string>
+    <string name="home">Home</string>
+    <string name="favorite">Saved</string>
+    <string name="connection_err">NO INTERNET CONNECTION</string>
+    <string name="more_info">For More Information </string>
+</resources>

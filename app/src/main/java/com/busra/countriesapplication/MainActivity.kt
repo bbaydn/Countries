@@ -1,0 +1,44 @@
+package com.busra.countriesapplication
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
+import com.busra.countriesapplication.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        otherPage()
+
+
+    }
+
+
+    private fun otherPage(){
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fCV) as NavHostFragment?
+        navHostFragment?.navController?.let { navController ->
+            binding.apply {
+                bottomNav.apply {
+                    setupWithNavController(navController)
+                    setOnItemSelectedListener {
+                        NavigationUI.onNavDestinationSelected(it,navController)
+                        navController.popBackStack(it.itemId,false)
+                        true
+                    }
+                }
+            }
+        }
+    }
+
+
+}
